@@ -8,80 +8,88 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Entity implementation class for Entity: ClienteEntity
+ * Entity implementation class for Entity: FornecedorEntity
  *
  */
 @Entity
 @Table(name = "Fornecedor")
-public class FornecedorEntity implements Serializable {
+public class FornecedorEntity implements Serializable
+{
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue
-	private Long id;
-	
+    @Id
+    @GeneratedValue
+    private Long id;
 
-	private String razaoSocial;
-	
+    private String razaoSocial;
 
-	private String cnpj;
+    private String cnpj;
 
-	private String endereco;
-	
-	private String inscricaoMunicipal;
+    private String endereco;
 
-	private String email;
+    private String inscricaoMunicipal;
 
-	public Long getId() {
-		return id;
-	}
+    private String email;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId()
+    {
+        return id;
+    }
 
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
 
-	
+    public String getRazaoSocial()
+    {
+        return razaoSocial;
+    }
 
-	public String getRazaoSocial() {
-		return razaoSocial;
-	}
+    public void setRazaoSocial(String razaoSocial)
+    {
+        this.razaoSocial = razaoSocial;
+    }
 
-	public void setRazaoSocial(String razaoSocial) {
-		this.razaoSocial = razaoSocial;
-	}
+    public String getCnpj()
+    {
+        return cnpj;
+    }
 
-	public String getCnpj() {
-		return cnpj;
-	}
+    public void setCnpj(String cnpj)
+    {
+        this.cnpj = cnpj;
+    }
 
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
+    public String getEndereco()
+    {
+        return endereco;
+    }
 
-	public String getEndereco() {
-		return endereco;
-	}
+    public void setEndereco(String endereco)
+    {
+        this.endereco = endereco;
+    }
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
+    public String getInscricaoMunicipal()
+    {
+        return inscricaoMunicipal;
+    }
 
-	public String getInscricaoMunicipal() {
-		return inscricaoMunicipal;
-	}
+    public void setInscricaoMunicipal(String inscricaoMunicipal)
+    {
+        this.inscricaoMunicipal = inscricaoMunicipal;
+    }
 
-	public void setInscricaoMunicipal(String inscricaoMunicipal) {
-		this.inscricaoMunicipal = inscricaoMunicipal;
-	}
+    public String getEmail()
+    {
+        return email;
+    }
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
 
 }

@@ -5,60 +5,71 @@ import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class ClienteResource {
+public class ClienteResource
+{
 
-	private Long id;
-	
-	@NotNull
-	@Size(min=15,max=300)
-	private String nome;
-	
-	@NotNull
-	@Size(min=11,max=11)
-	private String cpf;
+    private Long id;
 
-	private Date dataNascimento;
+    @NotNull
+    @Size(min = 15, max = 300)
+    private String nome;
 
-	private String email;
+    @NotNull
+    @Size(min = 11, max = 11)
+    private String cpf;
 
-	public Long getId() {
-		return id;
-	}
+    private Date dataNascimento;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String email;
 
-	public String getNome() {
-		return nome;
-	}
+    public Long getId()
+    {
+        return id;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public String getNome()
+    {
+        return nome;
+    }
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
 
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
+    public String getCpf()
+    {
+        return cpf;
+    }
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
+    public void setCpf(String cpf)
+    {
+        this.cpf = cpf;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public Date getDataNascimento()
+    {
+        return dataNascimento;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setDataNascimento(Date dataNascimento)
+    {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
 
 }

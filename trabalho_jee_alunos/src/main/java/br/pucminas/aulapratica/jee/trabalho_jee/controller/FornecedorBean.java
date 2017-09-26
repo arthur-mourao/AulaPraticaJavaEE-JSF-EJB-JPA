@@ -6,58 +6,72 @@ import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+
 import br.pucminas.aulapratica.jee.trabalho_jee.business.FornecedorBusiness;
-import br.pucminas.aulapratica.jee.trabalho_jee.exception.CnpjJaExistenteException;
 import br.pucminas.aulapratica.jee.trabalho_jee.resource.FornecedorResource;
 
 @Model
-public class FornecedorBean {
+public class FornecedorBean
+{
 
-	/*Neste ponto deve-se incluir o EJB para ser usado nos desafions 1 e 2*/
-	@EJB
-	private FornecedorBusiness fornecedorBusiness;
-	/*Neste ponto, serão incluídas as propriedades de classe que serão usadas para 
-	 * exibir as informações em tela.*/
-	private FornecedorResource fornecedorResource = new FornecedorResource();
+    @EJB
+    private FornecedorBusiness fornecedorBusiness;
 
-	/* Implementação da listagem de clientes conforme desafio 2 */
-	
+    /**
+     * Propriedades de classe que serão usadas para exibir as informações em
+     * tela.
+     */
+    private FornecedorResource fornecedorResource = new FornecedorResource();
 
-	public void salvarFornecedor() {
-		/*Implementação da lógica de salvar um cliente. Neste ponto deve-se tratar as mensagens 
-		 * conforme solicitado no desafio 1*/
-		try {
-		fornecedorBusiness.salvarFornecedor(fornecedorResource);
-		FacesContext.getCurrentInstance().addMessage("formFornecedor:messages", 
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Fornecedor Adicionado com Sucesso!", ""));
-		}catch (RuntimeException e) {
-			FacesContext.getCurrentInstance().addMessage("formFornecedor:messages", 
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-		}
-	}
-	
-	public List<FornecedorResource> getListaFornecedores(){
-		return fornecedorBusiness.listarFornecedores();
-	}
+    /**
+     * Invoca o EJB para armezenar um novo fornecedor
+     */
+    public void salvarFornecedor()
+    {
+        /*
+         * Implementação da lógica de salvar um fornecedor. Tratando as
+         * mensagens conforme solicitado no desafio 1
+         */
+        try
+        {
+            fornecedorBusiness.salvarFornecedor(fornecedorResource);
+            FacesContext.getCurrentInstance().addMessage("formFornecedor:messages",
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Fornecedor Adicionado com Sucesso!", ""));
+        } catch (RuntimeException e)
+        {
+            FacesContext.getCurrentInstance().addMessage("formFornecedor:messages",
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+        }
+    }
 
+    /**
+     * Invoca o EJB para listar os fornecedores cadastrados
+     *
+     * @return Lista de fornecedores
+     */
+    public List<FornecedorResource> getListaFornecedores()
+    {
+        return fornecedorBusiness.listarFornecedores();
+    }
 
-	public FornecedorBusiness getFornecedorBusiness() {
-		return fornecedorBusiness;
-	}
+    public FornecedorBusiness getFornecedorBusiness()
+    {
+        return fornecedorBusiness;
+    }
 
+    public void setFornecedorBusiness(FornecedorBusiness fornecedorBusiness)
+    {
+        this.fornecedorBusiness = fornecedorBusiness;
+    }
 
-	public void setFornecedorBusiness(FornecedorBusiness fornecedorBusiness) {
-		this.fornecedorBusiness = fornecedorBusiness;
-	}
+    public FornecedorResource getFornecedorResource()
+    {
+        return fornecedorResource;
+    }
 
-
-	public FornecedorResource getFornecedorResource() {
-		return fornecedorResource;
-	}
-
-
-	public void setFornecedorResource(FornecedorResource fornecedorResource) {
-		this.fornecedorResource = fornecedorResource;
-	}
+    public void setFornecedorResource(FornecedorResource fornecedorResource)
+    {
+        this.fornecedorResource = fornecedorResource;
+    }
 
 }
