@@ -6,8 +6,6 @@ import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.facelets.FaceletContext;
-
 import br.pucminas.aulapratica.jee.trabalho_jee.business.ClienteBusiness;
 import br.pucminas.aulapratica.jee.trabalho_jee.resource.ClienteResource;
 
@@ -27,9 +25,14 @@ public class ClienteBean {
 	public void salvarCliente() {
 		/*Implementação da lógica de salvar um cliente. Neste ponto deve-se tratar as mensagens 
 		 * conforme solicitado no desafio 1*/
-		clienteBusiness.salvarCliente(clienteResource);
-		FacesContext.getCurrentInstance().addMessage("formCliente:messages", 
+		try {
+			clienteBusiness.salvarCliente(clienteResource);
+			FacesContext.getCurrentInstance().addMessage("formCliente:messages", 
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Cliente Adicionado com Sucesso!", ""));
+		}catch (RuntimeException e) {
+			FacesContext.getCurrentInstance().addMessage("formCliente:messages", 
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+		}
 	}
 	
 	public List<ClienteResource> getListaClientes(){

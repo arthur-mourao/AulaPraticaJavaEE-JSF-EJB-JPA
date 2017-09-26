@@ -8,38 +8,37 @@
    <ui:define name="content">
       <h:form id="formCliente">
          <h2>CLIENTE</h2>
-          <p>
-         	<h:commandButton id="voltar" value="Voltar" action="clienteCadastro?faces-redirect=true" />
+         
+         <p>
+         	<h:commandButton id="voltar" value="Voltar" action="fornecedorCadastro?faces-redirect=true" />
          
          </p>
          <!-- Neste ponto, devemos recuperar a lista de clientes disponível no ManagedBean e devemos criar uma variável
          que irá representar um elemento na lista de elementos retornada -->
-         <h:dataTable var="c" value="#{clienteBean.listaClientes}" border="1">
+         <h:dataTable var="f" value="#{fornecedorBean.listaFornecedores}" border="1">
 	         <h:column>
 	            <f:facet name="header">Id</f:facet>
 	            <!-- Neste ponto deverá ser exibido o valor que se deseja nesta coluna usando JSF. O mesmo deve ser feito
 	            para as outras colunas -->
-	            <h:outputText value="#{c.id}"></h:outputText>
+	            <h:outputText value="#{f.id}"></h:outputText>
 	         </h:column>
 	         <h:column>
-	            <f:facet name="header">Nome do Cliente</f:facet>
-	            <h:outputText value="#{c.nome}"></h:outputText>
+	            <f:facet name="header">Razão Social</f:facet>
+	            <h:outputText value="#{f.razaoSocial}"></h:outputText>
 	         </h:column>
 	         <h:column>
-	            <f:facet name="header">CPF do Cliente</f:facet>
-	            <h:outputText value="#{c.cpf}"></h:outputText>
+	            <f:facet name="header">CNPJ</f:facet>
+	            <h:outputText value="#{f.cnpj}"></h:outputText>
 	         </h:column>
 	         <h:column>
-	            <f:facet name="header">Email do Cliente</f:facet>
-	            <h:outputText value="#{c.email}"></h:outputText>
+	            <f:facet name="header">Endereço</f:facet>
+	            <h:outputText value="#{f.endereco}"></h:outputText>
 	         </h:column>
 	         <h:column>
-	            <f:facet name="header">Nascimento do Cliente</f:facet>
-				<!-- Esta coluna tem um comportaento particular, pois deve exibir a data formatada com padrão dd/MM/yyyy -->
-				<h:outputText value="#{c.dataNascimento}">
-				<f:convertDateTime pattern="dd/MM/yyyy"/>
-				</h:outputText>
+	            <f:facet name="header">Email do Fornecedor</f:facet>
+	            <h:outputText value="#{f.email}"></h:outputText>
 	         </h:column>
+	         
 	      </h:dataTable>
 	      <p>
             <!-- Neste ponto, deve-se incluir o botão de voltar conforme o desafio 2 apresentado no laboratório. -->

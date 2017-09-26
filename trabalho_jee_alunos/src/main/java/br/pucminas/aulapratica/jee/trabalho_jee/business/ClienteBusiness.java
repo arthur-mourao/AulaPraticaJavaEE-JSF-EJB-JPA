@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import br.pucminas.aulapratica.jee.trabalho_jee.entity.ClienteEntity;
+import br.pucminas.aulapratica.jee.trabalho_jee.exception.CpfJaExistenteException;
 import br.pucminas.aulapratica.jee.trabalho_jee.repository.ClienteRepository;
 import br.pucminas.aulapratica.jee.trabalho_jee.resource.ClienteResource;
 
@@ -17,14 +18,20 @@ public class ClienteBusiness {
 	private ClienteRepository clienteRepository;
 	
 	public void salvarCliente(ClienteResource clienteResource){
-		/*Implementação da lógica de salvar um cliente*/
-		ClienteEntity clienteEntity = new ClienteEntity();
-		clienteEntity.setId(clienteResource.getId());
-		clienteEntity.setCpf(clienteResource.getCpf());
-		clienteEntity.setNome(clienteResource.getNome());
-		clienteEntity.setEmail(clienteResource.getEmail());
-		clienteEntity.setDataNascimento(clienteResource.getDataNascimento());
-		clienteRepository.salvar(clienteEntity);
+		String cpf = clienteResource.getCpf();
+		if(clienteRepository.getQtdClienteByCPF(cpf) == 0 ){
+			/*Implementação da lógica de salvar um cliente*/
+			ClienteEntity clienteEntity = new ClienteEntity();
+			clienteEntity.setId(clienteResource.getId());
+			clienteEntity.setCpf(clienteResource.getCpf());
+			clienteEntity.setNome(clienteResource.getNome());
+			clienteEntity.setEmail(clienteResource.getEmail());
+			clienteEntity.setDataNascimento(clienteResource.getDataNascimento());
+			clienteRepository.salvar(clienteEntity);
+		}
+		else {
+			throw new CpfJaExistenteException(cpf);
+		}
 	}
 	
 	/* Implementação da listagem de clientes conforme desafio 2 */
